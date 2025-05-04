@@ -68,5 +68,12 @@
     <Compile Include="ZoomBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="AssetBundles\ui-assets" />
+    <None Include="en_US.json" />
+    <None Include="packages.config" />
+    <None Include="ru_RU.json" />
+    <None Include="zh_CN.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,6 @@
 {
     "name": "LCZoom",
-    "version_number": "1.0.0",
+    "version_number": "1.0.3",
     "description": "Simple and customizable zoom mod for Lethal Company",
     "website_url": "https://github.com/sysfab/LCZoom",
     "dependencies": [

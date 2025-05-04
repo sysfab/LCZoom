@@ -3,6 +3,8 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using GameNetcodeStuff;
 using HarmonyLib;
+using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace LCZoom.Patches
@@ -26,8 +28,10 @@ namespace LCZoom.Patches
         {
             if (___inTerminalMenu || ___quickMenuManager.isMenuOpen || ___isTypingChat || ___disableMoveInput || ___inSpecialInteractAnimation && ___isClimbingLadder && ___inShockingMinigame) { return; }
 
+            bool isZooming = ZoomBase.InputInstance.ZoomKey.IsPressed();
+
             // Hold “C” to zoom  
-            float fovModifier = ZoomBase.InputInstance.ZoomKey.IsPressed() ? ZoomFov.Value : NormalFov.Value;
+            float fovModifier = isZooming ? ZoomFov.Value : NormalFov.Value;
 
             ___gameplayCamera.fieldOfView = Mathf.Lerp(___gameplayCamera.fieldOfView, ___targetFOV * fovModifier, 6f * Time.deltaTime);
         }
