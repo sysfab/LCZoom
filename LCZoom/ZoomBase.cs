@@ -16,7 +16,7 @@ namespace LCZoom
     {
         private const string modGUID = "sysfab.lczoom";
         private const string modName = "LC Zoom";
-        private const string modVersion = "1.0.3";
+        private const string modVersion = "1.1.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -25,6 +25,8 @@ namespace LCZoom
 
         internal static ConfigEntry<float> NormalFovMultiplier;
         internal static ConfigEntry<float> ZoomFovMultiplier;
+        internal static ConfigEntry<bool> EnableScrollZoom;
+        internal static ConfigEntry<float> ScrollZoomSpeed;
 
         internal ManualLogSource Log;
 
@@ -38,8 +40,12 @@ namespace LCZoom
 
             NormalFovMultiplier = Config.Bind("Settings", "NormalFovMultiplier", 1f,
                 "Normal FOV multiplier. Default is 1.0");
-            ZoomFovMultiplier = Config.Bind("Settings", "ZoomFovMultiplier", 0.01f,
-                "Zoom FOV multiplier. Default is 0.01");
+            ZoomFovMultiplier = Config.Bind("Settings", "ZoomFovMultiplier", 0.001f,
+                "Zoom FOV multiplier. Default is 0.001");
+            EnableScrollZoom = Config.Bind("Controls", "EnableScrollZoom", true, 
+                "Enable scroll zoom");
+            ScrollZoomSpeed = Config.Bind("Controls", "ScrollZoomSpeed", 0.05f,
+                "Scroll Zoom Speed. Default is 0.05");
 
             Log = BepInEx.Logging.Logger.CreateLogSource(modGUID);
             Log.LogInfo($"{modName} is loaded!");
